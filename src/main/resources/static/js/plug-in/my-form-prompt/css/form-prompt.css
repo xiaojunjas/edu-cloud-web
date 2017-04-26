@@ -1,0 +1,61 @@
+/*表单提示插件*/
+[form-prompt]{
+    position: relative;
+}
+[form-prompt]:after{
+    position: absolute;
+    top: -12px;
+    left: 20px;
+    z-index: 1;
+    padding: 3px 6px;
+    height: 22px;
+    content: attr(form-prompt-text);
+    color: #fff;
+    font-size: 12px;
+    background-color: #e08e0b;
+    border-radius: 3px;
+    visibility: hidden;
+    box-shadow: 0 0 14px rgba(0, 0, 0, .2);
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-0%, 10px);
+    transition: all .3s;
+}
+[form-prompt]:before{
+    position: absolute;
+    top: 10px;
+    left: 24px;
+    z-index: 2;
+    content: '';
+    width: 0px;
+    height: 0px;
+    border: 4px solid rgba(255,255,255,0);
+    border-top-color: #e08e0b;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-0%, 10px);
+    transition: all .3s;
+}
+[form-prompt='true']:after{
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-0%, -10px)
+}
+[form-prompt='true']:before{
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-0%, -10px)
+}
+[form-prompt='false']:after{
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(-0%, 10px)
+}
+[form-prompt='false']:before{
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(-0%, 10px)
+}

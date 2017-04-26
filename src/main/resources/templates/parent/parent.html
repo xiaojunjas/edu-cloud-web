@@ -1,0 +1,168 @@
+        <div class="content-wrapper">
+            <section class="content-header">
+                <h1>家长信息</h1>
+                <ol class="breadcrumb">
+                    <li>
+                        <a href="/panel"><i class="fa fa-dashboard"></i>首页</a>
+                    </li>
+                    <li>
+                        <a href="/management/parent">家长信息</a>
+                    </li>
+                </ol>
+            </section>
+            <section class="content">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="box">
+                            <div class="box-header">
+                              <!--   <div class="navbar">
+                                    <ul class="nav navbar-nav">
+                                        <li class="pull-left parent-add">
+                                            <a class="" href="javascript:void(0);">添加家长</a>
+                                        </li>
+                                        <li class="pull-left j_import_parent">
+                                       	    <a class="" href="javascript:void(0);">导入</a>
+                                        </li>
+                                        <li class="pull-left j_export_parent">
+                                            <a href="javascript:void(0);">导出</a>
+                                        </li>
+                                        <li class="pull-left j-parent-remove">
+                                            <a class="" href="javascript:void(0);">删除</a>
+                                        </li>
+                                        <li class="pull-left j-parent-student">
+                                            <a class="" href="javascript:void(0);">绑定学生家长</a>
+                                        </li>
+                                    </ul>
+                                </div> -->
+                                <div class="row">
+                                    <ul class="col-xs-8 nav navbar-nav">
+                                        <li class="col-xs-4">
+                                           <select class="form-control j_school" id="schools">
+											  <!--  <option th:each="item:${schools}" th:value="${item.id}"  th:text="${item.name}"></option> -->
+										   </select>
+                                        </li>
+                                    </ul>
+                                    <form class="col-xs-3 pull-right">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="query" placeholder="输入姓名"/>
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-info" type="button" id="but_query">搜索</button>
+                                            </span>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="box-body m-mi-he">
+                                <table class="table table-bordered table-hover table-condensed table-striped text-center" id="j-table-1">
+                                    <thead>
+                                    <tr>
+                                        <th>
+                                            <label class="my-che-label j-che-1">
+                                                <input type="checkbox" name="user" />
+                                            </label>
+                                        </th>
+                                        <th>姓名</th>
+                                        <th>手机号</th>
+                                        <th>地址</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="parentList"></tbody>
+                                </table>
+                                 <section class="page pull-right">
+											<ul class="pagination"></ul>
+	                              </section>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        
+        <!-- <div class="modal fade" id="Modal-upload-parent" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+           <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">导入</h4>
+                    </div>
+                    <div class="modal-body col-xs-12">
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <label for="input-file" class="col-sm-2 control-label"><span class="my-red">*</span>文件</label>
+                                <div class="col-sm-10 input-group m-input-group j-input-group" form-prompt="false" form-prompt-text="文件选择错误">
+                                    <div class="input-group">
+                                        <input type="file" class="form-control" id="input_curriculum_file" value="" style="display: none" />
+                                        <div class="form-control j-file-text m-file-text" style="width: 389px"></div>
+                                        <span class="input-group-btn">
+                                            <label for="input_curriculum_file" class="btn btn-info j-file-click">选择文件</label>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                             <div class="form-group">
+                             	 <a class="col-sm-2 control-label" th:href="@{/template/家长信息导入模板.xlsx}" download="家长信息导入模板.xlsx">下载模板</a>
+                             </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-primary j-confirm-btn j_my_ri_btn">确定</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+         <div class="modal fade" id="Modal-parent-student" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+           <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">导入</h4>
+                    </div>
+                    <div class="modal-body col-xs-12">
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <label for="input-file" class="col-sm-2 control-label"><span class="my-red">*</span>文件</label>
+                                <div class="col-sm-10 input-group m-input-group j-input-group" form-prompt="false" form-prompt-text="文件选择错误">
+                                    <div class="input-group">
+                                        <input type="file" class="form-control" id="input_student_parent_file" value="" style="display: none" />
+                                        <div class="form-control j-file-text m-file-text" style="width: 389px"></div>
+                                        <span class="input-group-btn">
+                                            <label for="input_student_parent_file" class="btn btn-info j-file-click">选择文件</label>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                            	 <a class="col-sm-2 control-label" th:href="@{/template/家长与学生关系绑定导入模板.xlsx}" download="家长与学生关系绑定导入模板.xlsx">下载模板</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-primary j-confirm-btn j_my_stu_par_btn">确定</button>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        
+
+<script th:src="@{/js/parent/parent.js}"></script>
+<script th:src="@{/js/plug-in/my-opt/js/opt.js}"></script>
+
+<script id="parentListTemplate" type="text/x-jquery-tmpl">
+{{each(i,item) list}}
+	<tr>
+		 <td>
+            <label class="my-che-label j-che-lis-1">
+               <input type="checkbox" name="user" class="check-single" id="{{= item.id}}"/>
+            </label>
+        </td>
+      	<td class="name">{{= item.name}}</td>
+   	    <td class="phone">{{= item.phone}}</td>
+		<td>{{= item.adders}}</td>
+    </tr>
+{{/each}}
+</script>

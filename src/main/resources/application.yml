@@ -1,0 +1,37 @@
+multipart:
+    max-file-size: 5120Mb
+    max-request-size: 5120Mb
+
+server:
+    port: 7001
+    context-path: /cloud
+
+spring:
+    thymeleaf:
+        cache: false
+        cache-period: 0
+    template:
+        cache: false
+    mvc:
+        favicon:
+            enabled: false
+
+#monitor           
+management:
+    port: 8092
+    security:
+        enabled: false
+
+logging:
+    level:
+        root: INFO
+    file: logs/edu-cloud.log
+
+
+user-url: http://127.0.0.1:7002
+
+
+
+#layout
+layout: content
+full-layout: full-layout
