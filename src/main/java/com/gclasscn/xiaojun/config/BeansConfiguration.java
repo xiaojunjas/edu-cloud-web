@@ -1,6 +1,7 @@
 package com.gclasscn.xiaojun.config;
 
 import java.util.LinkedHashMap;
+import java.util.concurrent.TimeUnit;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.thymeleaf.ThymeleafProperties;
@@ -8,16 +9,20 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
 import org.springframework.util.MimeType;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ViewResolver;
 import org.thymeleaf.spring4.SpringTemplateEngine;
 import org.thymeleaf.spring4.resourceresolver.SpringResourceResourceResolver;
 import org.thymeleaf.spring4.view.ThymeleafViewResolver;
 import org.thymeleaf.templateresolver.TemplateResolver;
 
+import com.gclasscn.xiaojun.service.FileService;
 import com.gclasscn.xiaojun.service.ParentService;
+import com.squareup.okhttp.OkHttpClient;
 
 import nz.net.ultraq.thymeleaf.LayoutDialect;
 import retrofit.RestAdapter;
+import retrofit.client.OkClient;
 import retrofit.converter.JacksonConverter;
 
 @Configuration
@@ -93,7 +98,12 @@ public class BeansConfiguration {
 		);
 	}*/
 	
-	/*@Bean
+	@Bean
+	public RestTemplate restTemplate() {
+		return new RestTemplate();
+	}
+	
+	@Bean
 	public OkClient okClient() {
 		return new OkClient(okHttpClient());
 	}
@@ -105,14 +115,14 @@ public class BeansConfiguration {
 		okHttpClient.setReadTimeout(commonConfig.getReadTimeout(), TimeUnit.SECONDS);
 		okHttpClient.setWriteTimeout(commonConfig.getWriteTimeout(), TimeUnit.SECONDS);
 		return okHttpClient;
-	}*/
+	}
 	
 	/**
 	 * 自定义http客户端(默认超时10秒,文件上传下载需自定义超时时间)
 	 */
-	/*private <T> T service(String restUrl, Class<T> clazz){
+	private <T> T service(String restUrl, Class<T> clazz){
 		return new RestAdapter.Builder().setConverter(new JacksonConverter()).setClient(okClient()).setEndpoint(restUrl).build().create(clazz);
-	}*/
+	}
 	
 	private <T> T commonService(String restUrl, Class<T> clazz){
 		return new RestAdapter.Builder().setConverter(new JacksonConverter()).setEndpoint(restUrl).build().create(clazz);
@@ -121,6 +131,11 @@ public class BeansConfiguration {
 	@Bean
 	public ParentService parentService() {
 		return commonService(commonConfig.getUserUrl(), ParentService.class);
+	}
+	
+	@Bean
+	public FileService fileService() {
+		return service(commonConfig.getFileUrl(), FileService.class);
 	}
 
 	

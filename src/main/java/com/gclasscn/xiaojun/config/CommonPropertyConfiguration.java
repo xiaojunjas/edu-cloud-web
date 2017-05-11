@@ -10,15 +10,15 @@ public class CommonPropertyConfiguration {
 	/**
 	 * rest connection configurations
 	 */
-	/*private int connectionTimeout;
+	private int connectionTimeout;
 	private int readTimeout;
-	private int writeTimeout;*/
+	private int writeTimeout;
 	
 	/**
 	 * rest url configurations
 	 */
 	private String userUrl;
-//	private String fileUrl;
+	private String fileUrl;
 //	private String baseUrl;
 	
 	/**
@@ -41,7 +41,7 @@ public class CommonPropertyConfiguration {
 	
 	private Map<String, String> templates;
 
-	/*public int getConnectionTimeout() {
+	public int getConnectionTimeout() {
 		return connectionTimeout;
 	}
 	public void setConnectionTimeout(int connectionTimeout) {
@@ -58,19 +58,19 @@ public class CommonPropertyConfiguration {
 	}
 	public void setWriteTimeout(int writeTimeout) {
 		this.writeTimeout = writeTimeout;
-	}*/
+	}
 	public String getUserUrl() {
 		return userUrl;
 	}
 	public void setUserUrl(String userUrl) {
 		this.userUrl = userUrl;
 	}
-	/*public String getFileUrl() {
+	public String getFileUrl() {
 		return fileUrl;
 	}
 	public void setFileUrl(String fileUrl) {
 		this.fileUrl = fileUrl;
-	}*/
+	}
 	public String getLayout() {
 		return layout;
 	}
@@ -95,4 +95,23 @@ public class CommonPropertyConfiguration {
 	public void setTemplates(Map<String, String> templates) {
 		this.templates = templates;
 	}
+	/*public String getImagePreviewUrl() {
+		return imagePreviewUrl;
+	}
+	public void setImagePreviewUrl(String imagePreviewUrl) {
+		this.imagePreviewUrl = imagePreviewUrl;
+	}
+	public String getFileDownloadUrl() {
+		return fileDownloadUrl;
+	}
+	public void setFileDownloadUrl(String fileDownloadUrl) {
+		this.fileDownloadUrl = fileDownloadUrl;
+	}
+	public String getFilesDownloadUrl() {
+		return filesDownloadUrl;
+	}
+	public void setFilesDownloadUrl(String filesDownloadUrl) {
+		this.filesDownloadUrl = filesDownloadUrl;
+	}
+	*/
 }

@@ -84,4 +84,34 @@ $(function () {
 		}
     };    
     
+  //自定义文件选择器
+    $("#input_student_parent_file").change(function () {
+    	var file = $(this).val();
+        $(".j-file-text").text(file.substring(file.lastIndexOf('\\')+1));
+    })
+    
+    $(".j-parent-student").click(function(){
+    	$("#Modal-parent-student").modal("show");
+    });
+    
+    $(".j_my_stu_par_btn").click(function(){
+    	editAvatar();
+    });
+    
+    function editAvatar(){
+    	var formData = new FormData();
+		formData.append("file", $("#input_student_parent_file").prop("files")[0]);
+	    $.ajax({
+	        url: "/cloud/save/img",
+	        type: "POST",
+	        data: formData,
+	        processData: false,  // 告诉jQuery不要去处理发送的数据
+	        contentType: false,  // 告诉jQuery不要去设置Content-Type请求头
+	        success: function(data){
+	        	alert(data);
+//	        	$("#Modal-parent-student").modal("hide");
+	        }
+	    });
+	}
+    
 })
