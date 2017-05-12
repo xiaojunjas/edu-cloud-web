@@ -1,14 +1,25 @@
 package com.gclasscn.xiaojun.controller;
 
 import java.io.IOException;
+import java.net.URI;
+import java.net.URLConnection;
+import java.util.Arrays;
 
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.client.RequestCallback;
+import org.springframework.web.client.ResponseExtractor;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -39,13 +50,13 @@ private Logger logger = LoggerFactory.getLogger(FileController.class);
 	
 	/**
 	 * 原始图片预览
-	 *//*
+	 */
 	@RequestMapping(value="/files/images/{imageId}", method=RequestMethod.GET)
 	public void preview(@PathVariable("imageId") String imageId, HttpServletResponse response){
 		fileHandler(response, config.getFileUrl() + config.getImagePreviewUrl() + imageId);
 	}
 	
-	*//**
+	/**
 	 * 缩略图预览
 	 *//*
 	@RequestMapping(value="/files/images/{imageId}/{width}/{height}", method=RequestMethod.GET)
@@ -69,7 +80,7 @@ private Logger logger = LoggerFactory.getLogger(FileController.class);
 		fileHandler(response, config.getFileUrl() + config.getFilesDownloadUrl() + "?fileIds=" + String.join("&fileIds=", fileIds));
 	}*/
 	
-	/*private void fileHandler(HttpServletResponse response, String path){
+	private void fileHandler(HttpServletResponse response, String path){
 		URI uri = URI.create(path);
 		URLConnection connection;
 		try {
@@ -90,6 +101,6 @@ private Logger logger = LoggerFactory.getLogger(FileController.class);
 		response.setHeader("Content-Length", connection.getHeaderField("Content-Length"));
 		response.setHeader("Content-Type", connection.getHeaderField("Content-Type"));
 		response.setHeader("Content-Disposition", connection.getHeaderField("Content-Disposition"));
-	}*/
+	}
 	
 }

@@ -31,6 +31,7 @@ logging:
 user-url: http://127.0.0.1:7002
 file-url: http://127.0.0.1:7003
 
+image-preview-url: /v1/files/images/
 
 #layout
 layout: content

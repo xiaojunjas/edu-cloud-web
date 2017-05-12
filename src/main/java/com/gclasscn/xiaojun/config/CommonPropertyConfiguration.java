@@ -35,8 +35,8 @@ public class CommonPropertyConfiguration {
 	private String layout;
 	private String fullLayout;
 	
-	/*private String imagePreviewUrl;
-	private String fileDownloadUrl;
+	private String imagePreviewUrl;
+	/*private String fileDownloadUrl;
 	private String filesDownloadUrl;*/
 	
 	private Map<String, String> templates;
@@ -95,13 +95,13 @@ public class CommonPropertyConfiguration {
 	public void setTemplates(Map<String, String> templates) {
 		this.templates = templates;
 	}
-	/*public String getImagePreviewUrl() {
+	public String getImagePreviewUrl() {
 		return imagePreviewUrl;
 	}
 	public void setImagePreviewUrl(String imagePreviewUrl) {
 		this.imagePreviewUrl = imagePreviewUrl;
 	}
-	public String getFileDownloadUrl() {
+	/*	public String getFileDownloadUrl() {
 		return fileDownloadUrl;
 	}
 	public void setFileDownloadUrl(String fileDownloadUrl) {
