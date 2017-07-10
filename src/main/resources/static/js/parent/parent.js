@@ -114,4 +114,25 @@ $(function () {
 	    });
 	}
     
+    /**
+     * 注册页面
+     */
+    $(".j-parent-email").click(function(){
+    	$("#Modal-email").modal("show");
+    });
+    
+    $(".j-confirm-btn").click(function(){
+    	 $.ajax({
+ 	        url: "/cloud/email/register",
+ 	        type: "POST",
+ 	        data: {
+ 	        	email:$("#email").val()
+ 	        },
+ 	        success: function(data){
+ 	        	alert(data);
+// 	        	$("#Modal-parent-student").modal("hide");
+ 	        }
+ 	    });
+    });
+    
 })

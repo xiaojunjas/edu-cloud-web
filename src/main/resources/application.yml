@@ -3,7 +3,7 @@ multipart:
     max-request-size: 5120Mb
 
 server:
-    port: 7001
+    port: 7009
     context-path: /cloud
 
 spring:

@@ -16,6 +16,7 @@ import org.thymeleaf.spring4.resourceresolver.SpringResourceResourceResolver;
 import org.thymeleaf.spring4.view.ThymeleafViewResolver;
 import org.thymeleaf.templateresolver.TemplateResolver;
 
+import com.gclasscn.xiaojun.service.EmailService;
 import com.gclasscn.xiaojun.service.FileService;
 import com.gclasscn.xiaojun.service.ParentService;
 import com.squareup.okhttp.OkHttpClient;
@@ -137,6 +138,10 @@ public class BeansConfiguration {
 	public FileService fileService() {
 		return service(commonConfig.getFileUrl(), FileService.class);
 	}
-
+	
+	@Bean
+	public EmailService emailService() {
+		return commonService(commonConfig.getUserUrl(), EmailService.class);
+	}
 	
 }

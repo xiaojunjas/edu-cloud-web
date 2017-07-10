@@ -1,10 +1,18 @@
 package com.gclasscn.xiaojun.domain;
 
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Parent {
 	private Long id;
 	private String name;
 	private String phone;
 	private String adders;
+	
+	private List<Parent> parent;
+	
 	public Long getId() {
 		return id;
 	}
@@ -29,9 +37,17 @@ public class Parent {
 	public void setAdders(String adders) {
 		this.adders = adders;
 	}
+	public List<Parent> getParent() {
+		return parent;
+	}
+	public void setParent(List<Parent> parent) {
+		this.parent = parent;
+	}
+	
 	@Override
 	public String toString() {
-		return "Parent [id=" + id + ", name=" + name + ", phone=" + phone + ", adders=" + adders + "]";
+		return "Parent [id=" + id + ", name=" + name + ", phone=" + phone + ", adders=" + adders + ", parent=" + parent
+				+ "]";
 	}
 	
 }
